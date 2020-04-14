@@ -67,3 +67,83 @@ def percentage(count,total):
 lexical_diversity(text3)
 
 percentage(text4.count('a'),len(text4))    
+#%%
+#词链表
+ sent1=['call','me','Kodi','.']
+sent1
+
+lexical_diversity(sent1)
+#%%
+print(sent2)
+print(sent3)
+
+#%%
+#连接
+sent4+sent1
+
+#追加
+sent1.append('Cool')
+print(sent1)
+
+#索引
+text4[173]
+
+text4.index('awaken')
+
+#切片
+
+print(text5[16715:16735])
+
+print(text6[1600:1625])
+
+
+print(text2[141245:])
+
+#%%
+#简单统计
+#频率分布
+fdist1 = FreqDist(text1)
+fdist1
+
+fdist1['whale']
+
+fdist1.plot(50,cumulative = True)
+
+#只出现了一次的词语
+fdist1.hapaxes()
+
+#%%
+#细粒度的选择词
+V = set(text1)
+long_words = [w for w in V if len(w) > 15]
+sorted(long_words)
+
+#高频次而且词语长度大于7的词语
+fdist5 = FreqDist(text5)
+sorted([w for w in set(text5) if len(w)>7 and fdist5[w] > 7])
+
+#%%
+#词语搭配
+from nltk.util import bigrams
+list(bigrams(['more','is','said','than','done']))
+
+text4.collocation_list()
+
+text8.collocation_list()
+
+
+#%%
+#其他统计结果
+[len(w) for w in text1]
+
+#各个长度词语的出现频率
+fdist = FreqDist([len(w) for w in text1])
+fdist
+
+fdist.keys()
+
+fdist.items()
+
+fdist.max()
+
+fdist[3]
