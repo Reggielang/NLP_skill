@@ -44,4 +44,34 @@ modals = ['can','could','may','might','must','will']
 for m in modals:
     print(m,fdist[m]) 
          
-         
+#%%
+#条件频率分布
+from nltk.corpus import brown
+cfd = nltk.ConditionalFreqDist(
+        (genre,word)
+        for genre in brown.categories()
+        for word in brown.words(categories=genre))
+    
+genre_word = [(genre,word)
+    for genre in ['news','romance']
+    for word in brown.words(categories=genre)]    
+ 
+len(genre_word)     
+
+genre_word[:6]
+
+#%%
+cfd['news']
+cfd['romance']
+
+#%%
+#绘制分布图和分布表
+from nltk.corpus import inaugural
+cfd = nltk.ConditionalFreqDist(
+        (target,fileid[:4])
+        for fileid in inaugural.fileids()
+        for w in inaugural.words(fileid)
+        for target in ['america','citizen']
+        if w.lower().startswith(target))
+cfd.plot()
+       
